@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sabor que cruza fronteras</title>
+  <style>
+    :root {
+      --max-width: 1140px;
+      --font-serif: 'Georgia', serif;
+      --font-sans: 'Arial', sans-serif;
+      --text-color: #222;
+      --gray: #f2f2f2;
+      --border-color: #ddd;
+      --main-color: #001b7f;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-serif);
+      color: var(--text-color);
+      background: #fff;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border-color);
+      padding: 20px 0;
+    }
+
+    header .container img {
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    }
+    header h1 {
+      font-size: 1.8em;
+      margin: 0;
+      font-family: var(--font-sans);
+    }
+
+    .article-header {
+      margin-bottom: 40px;
+    }
+
+    .article-header .date {
+      font-size: 0.9em;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .article-header h1 {
+      font-size: 2em;
+      margin: 0;
+      font-weight: bold;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+
+    .social-buttons {
+      margin-top: 15px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      background-color: transparent; /* Sin fondo para todas las imágenes */
+      padding: 5px;
+    }
+
+    .social-btn img {
+      width: 40px;
+      height: 40px;
+      display: block;
+    }
+
+    /* Para otros botones que quieras colores o efectos, los puedes agregar aquí */
+
+    .article-header .meta {
+      font-size: 0.9em;
+      color: #888;
+      margin-top: 10px;
+    }
+
+    main {
+      display: flex;
+      max-width: var(--max-width);
+      margin: auto;
+      padding: 40px 20px;
+      gap: 40px;
+    }
+
+    article {
+      flex: 3;
+    }
+
+    aside {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    aside .widget {
+      background: var(--gray);
+      padding: 20px;
+      border: 1px solid var(--border-color);
+    }
+
+    aside .custom-button {
+      background-color: var(--main-color);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      font-family: var(--font-sans);
+      font-size: 1.1em;
+      margin-bottom: 15px;
+      text-decoration: none;
+      justify-content: space-between;
+      border-radius: 12px;
+    }
+
+    aside .custom-button img {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+
+    aside .subscribe {
+      background-color: #fff;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    aside .subscribe label {
+      font-family: var(--font-serif);
+      font-size: 1em;
+    }
+
+    aside .subscribe input[type="email"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      width: 100%;
+      font-size: 1em;
+    }
+
+    aside .subscribe button {
+      background-color: var(--main-color);
+      color: #fff;
+      padding: 10px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+    h2 {
+      border-left: 4px solid black;
+      padding-left: 10px;
+      font-size: 1.4em;
+      margin-top: 40px;
+    }
+
+    p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: justify;
+    }
+
+    figure {
+      margin: 30px 0;
+    }
+
+    figure img {
+      max-width: 100%; /*imagen tamaño*/
+      height: auto;
+      display: block;
+    }
+
+    figure figcaption {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 5px;
+      font-style: italic;
+    }
+
+    blockquote {
+      font-style: italic;
+      border-left: 4px solid #ccc;
+      margin: 30px 0;
+      padding-left: 20px;
+      color: #555;
+    }
+
+    footer {
+      background: #f7f7f7;
+      padding: 40px 20px;
+      margin-top: 60px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    footer .container {
+      max-width: var(--max-width);
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    footer img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    footer .bio {
+      max-width: 600px;
+    }
+    
+    .galeria {
+      display: flex;
+      justify-content: center;
+      gap: 20px; /* espacio entre imágenes */
+      flex-wrap: wrap; /* para que se acomoden en pantallas pequeñas */
+      margin: 40px 0;
+      max-width: 1000px;
+      padding: 0 20px;
+    }
+
+    .galeria img {
+      width: 100%;
+      max-width: 240px; /* cada imagen máximo 300px */
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
+    }
+
+    .texto-con-imagen {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+    }
+
+    .texto-con-imagen img {
+    width: 300px;
+    height: auto;
+    border-radius: 12px;
+    flex-shrink: 0;
+    margin-bottom: 5px; /* espacio entre imagen y texto */
+    }
+
+    .texto-con-imagen .contenido {
+    flex: 1; /* Esto permite que el texto ocupe el resto del espacio */
+    min-width: 0; /* Evita desbordamientos raros */
+    margin-top: -10px; /* esto empuja el texto hacia arriba */
+    }
+
+    .imagen-con-texto figcaption {
+    font-size: 0.9em;
+    color: #555;
+    text-align: center;
+    margin-top: 0; /* elimina espacio extra arriba */
+    }
+
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+
+  header {
+  height: 70px; /* o la altura que quieras */
+  overflow: hidden;
+}
+
+    header .container {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    }
+    header .container img {
+    max-height: 60px;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle; /* o top */
+    line-height: 1;
+    }
+
+  footer .container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .texto-con-imagen {
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;
+  }
+
+  .texto-con-imagen img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .contenido {
+    width: 100%;
+  }
+
+  .galeria {
+    justify-content: center;
+  }
+
+  .galeria img {
+    max-width: 100%;
+  }
+
+  aside {
+    width: 100%;
+  }
+
+  aside .custom-button {
+    font-size: 1em;
+    padding: 10px 15px;
+  }
+
+  footer img {
+    width: 80px;
+    height: 80px;
+  }
+
+  figure figcaption {
+    text-align: center;
+    margin-left: 0 !important;
+  }
+
+  img[style*="margin-left"] {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+  }
+
+  figcaption[style*="margin-left"] {
+    margin-left: 0 !important;
+    text-align: center !important;
+  }
+
+  .social-buttons {
+    justify-content: center;
+  }
+  
+      .article-header h1 {
+    font-size: 1.5em;
+    text-align: center;
+  }
+}
+  </style>
+</head>
+<body>
+<header>
+  <div class="container" style="height: 80px; display: flex; justify-content: left; align-items: center; overflow: visible;">
+    <img src="RompFront.png" alt="Rompiendo Fronteras Logo" style="max-height: 300px; object-fit: contain; margin-top: 0px;" />
+  </div>
+</header>
+
+
+  <main>
+    <article>
+      <div class="article-header">
+        <div class="date">05 JUL 2025</div>
+        <h1>Identity That Crosses Borders: Success Stories in the Export of Venezuelan Gastronomic Products</h1>
+
+        <div class="social-buttons">
+          <a href="https://wa.me/tu-numero" target="_blank" aria-label="WhatsApp" class="social-btn whatsapp" title="WhatsApp">
+            <img src="whatsapp.png" alt="WhatsApp" />
+          </a>
+
+          <a href="https://x.com/tu_usuario" target="_blank" aria-label="X" class="social-btn x" title="X">
+            <img src="x.png" alt="X" />
+          </a>
+
+          <a href="https://facebook.com/tu_usuario" target="_blank" aria-label="Facebook" class="social-btn facebook" title="Facebook">
+            <img src="facebook.png" alt="Facebook" />
+          </a>
+
+          <a href="https://instagram.com/lecafedelili" target="_blank" aria-label="Instagram" class="social-btn instagram" title="Instagram">
+            <img src="instagram.png" alt="Instagram" />
+          </a>
+
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" aria-label="TikTok" class="social-btn tiktok" title="TikTok">
+            <img src="tiktok.png" alt="TikTok" />
+          </a>
+        </div>
+
+        <div class="meta">Published by Lilian El Kareh at 6:06 PM in Rompiendo Fronteras</div>
+      </div>
+
+      <h2>Much More Than Flavor</h2>
+
+    <p>In the state of Sucre, Venezuela, a land of beautiful landscapes, high-quality products are born that tell stories. Gastronomy, understood in its broadest and most multidimensional sense as knowledge, techniques, history, social impact, and sustainability, offers much more than food; it allows for the creation of narratives that cross borders and connect with consumers seeking authenticity.</p>
+
+
+<!-- Imagen a la izquierda, texto adaptado a la derecha -->
+<div class="texto-con-imagen">
+  <figure style="margin: 0;">
+    <img src="cumana.jpg" alt="Franceschi Cacao">
+    <figcaption style="font-size: 0.9em; color: #555; margin-top: 5px;">
+      Image by <a href="https://pixabay.com/es/photos/cuman%C3%A1-sucre-venezuela-playa-mar-4101842/">LuisX</a> on Pixabay
+    </figcaption>
+  </figure>
+
+  <div class="contenido">
+    <p>
+      Today, in markets saturated with similar products, those stories, cultural roots, and identity become true competitive advantages. Sucre, known for its beaches, climate, and cacao plantations, holds the magic that allows companies like Cacao San José, with its Franceschi chocolate brand, and Destilería Carúpano, with its centuries-old rum tradition, to offer high-quality products that carry with them a rich culture and history.
+    </p>
+  </div>
+</div>
+
+    <p>According to the FAO (2017), this added value emerges when a product ceases to be merely a raw material and becomes something that reflects history, quality, and authenticity. And although Venezuela is not among the leading exporters of food or beverages in the region, it has managed to stand out precisely because of this transformation. For example, between January and April of this year, Venezuelan rum exported more than two million cases to one hundred countries (Banca y Negocios, 2025).</p>
+    <p>Behind these numbers are real stories—strategies built with patience and passion.</p>
+
+    <h2>"Planting Cacao, Building the Future" – The Franceschi Chocolate Case</h2>
+
+        <!--
+      <div class="mini-carousel">
+        <input type="radio" name="slide" id="img1" checked>
+        <input type="radio" name="slide" id="img2">
+        <input type="radio" name="slide" id="img3">
+
+        <div class="slides">
+            <div class="slide">
+            <img src="Franceschi.jpeg" alt="Cacao en la hacienda">
+            </div>
+            <div class="slide">
+            <img src="Chocos.jpeg" alt="Proceso del chocolate">
+            </div>
+            <div class="slide">
+            <img src="Empaque.jpeg" alt="Empaque premium Franceschi">
+            </div>
+        </div>
+
+        <div class="nav">
+            <label for="img1"></label>
+            <label for="img2"></label>
+            <label for="img3"></label>
+        </div>
+        </div>
+      -->
+
+        <!-- Galería de 3 imágenes una al lado de otra -->
+      <div class="galeria">
+        <img src="3Choco.jpg" alt="Descripción imagen 1">
+        <img src="3Choco2.jpg" alt="Descripción imagen 3">
+      </div>
+        <figcaption style="font-size: 0.9em; color: #555; margin-top: -30px; margin-left: 480px;">
+                Images by Lilian El Kareh
+        </figcaption>
+
+     <blockquote>"Added value leans more towards the development of people... training the producer with structures that allow them to guarantee their growth" – Jhoan Andrade, Manager of Cacao San José.</blockquote>
+
+    <h3>From the Land to the Chocolate Bar</h3>
+
+    <p>In the Paria Peninsula is Cacao San José, with an estate full of history to tell through its chocolate brand Franceschi. They have successfully integrated quality, sustainability, cultural identity, and community development, supported by three fundamental pillars that uphold their unique proposition.</p>
+
+    <p>Total traceability is one of these pillars; each batch of cacao used to make their chocolate can be traced from the bean to the producer’s name and location, making their chocolate 100% traceable. Some premium chocolate packaging even displays the batch number used in production. This generates trust in product quality and safety, promoting a positive reputation in new markets.</p>
+
+    <p>The second pillar is their quality cacao. Franceschi preserves seven unique Criollo varieties: Ocumare 61, 67, and 77, Chuao, Guasare, Canoabo, and Porcelana, as well as a Forastero cacao from Río Caribe and a Trinitario, all carefully and committedly cultivated at Hacienda San José. For the brand, it is vital that their products are of high quality, as this characteristic also reflects the image they project when exporting.</p>
+
+    <p>The third pillar is the B Certification and what they call “social pollination.” As a B Corporation, Franceschi measures its success not only in profits but in its social impact. Through the San José Foundation, over 13 years they have impacted 17,563 children, 2,036 educators, 1,586 producers and entrepreneurs, 4,991 caregivers, and 18,489 patients in health services, demonstrating that their commitment encompasses the entire human chain behind cacao.</p>
+
+    <h3>Market Strategy: “Venezuela is Cacao”</h3>
+
+    <p>Cacao San José understands the power of emotional storytelling and cultural connection. Storytelling is the key tool to build lasting relationships with consumers, highlighting not only the product but also the values, history, and people behind it. Franceschi builds a narrative of social impact, traceability, sustainability, and Venezuelan pride, supported by digital media, videos, slogans, and content that humanizes the product.</p>
+
+    <p>As Jhoan Andrade says:</p>
+
+    <p>“Part of the success is that the brand is recognized by Venezuelans, so that these same Venezuelans around the world exalt and make that product reach other customers... be patient, focus on making quality products, be efficient in productivity... that efficiency is what will allow you to be competitive in international markets.”</p>
+
+    <p>Franceschi operates with an export model that combines positioning raw materials and finished products. It exports to more than 23 countries, mainly beans, liquor, and cocoa butter (90% raw materials), but also premium chocolates (10% finished products) that tell stories of origin. Their model professionalizes small producers, preserves unique Criollo varieties, and positions Venezuelan cacao as a product with its own surname.</p>
+
+    <h2>Carúpano Rum – 250 Years of Tradition in a Bottle</h2>
+
+      <!--
+      <div class="mini-carousel">
+        <input type="radio" name="slide" id="img4" checked>
+        <input type="radio" name="slide" id="img5">
+        <input type="radio" name="slide" id="img6">
+
+        <div class="slides">
+            <div class="slide">
+            <img src="Ron.jpeg" alt="Cacao en la hacienda">
+            </div>
+            <div class="slide">
+            <img src="Ronylib.jpeg" alt="Proceso del chocolate">
+            </div>
+            <div class="slide">
+            <img src="Carupano.jpeg" alt="Empaque premium Franceschi">
+            </div>
+        </div>
+
+            <div class="nav">
+                <label for="img4"></label>
+                <label for="img5"></label>
+                <label for="img6"></label>
+            </div>
+        </div>
+      -->
+
+      <blockquote>“Rum is an emblematic drink of Venezuela; it represents the camaraderie and warmth of Venezuelans… Ron Carúpano is more than its products, it is a way of life.” – Auroberth Rojas, Manager of Destilería Carúpano.</blockquote>
+
+    <p>Founded over 250 years ago in the Macarapana Valley, Ron Carúpano is not just a liquor brand, but an emblem of Venezuelan rum. It has pillars that make it unique.</p>
+
+    <p>The water used to make the rum comes from springs or deep wells, which guarantees purity and prevents unwanted odors or flavors.</p>
+
+    <p>The exceptional microclimate of the Macarapana Valley, in Carúpano, Sucre state, allows the aging of the rum to accelerate and intensify, contributing to its distinctive flavor.</p>
+
+    <p>The figure of the Master Blender, Carmen López de Bastidas, the only woman in that role in Venezuela, has developed for over 35 years the unique profiles of Destilería Carúpano, bringing mastery and passion to every bottle.</p>
+
+    <p>Since 2022, the “Rum of Venezuela” is a Controlled Designation of Origin (DOC) that requires the rum to be made with 100% Venezuelan cane molasses, aged at least two years in oak barrels, and produced entirely in the country. This differentiates Venezuelan rum and consolidates its prestige and authenticity.</p>
+
+                <!-- Galería de 3 imágenes una al lado de otra -->
+      
+      <img src="Ron.jpg" alt="Descripción de la imagen" style="display: block; margin: 30px auto; max-width: 100%; height: auto; border-radius: 12px;">
+       <figcaption style="font-size: 0.9em; color: #555; margin-top: -10px; margin-left: 650px;">
+                Image by Lilian El Kareh
+        </figcaption>
+
+      <h3>Market Strategy: “A 250-Year Legacy...”</h3>
+
+    <p>Ron Carúpano has built its market strategy by merging Venezuelan heritage with the sophistication demanded by the international market, emotionally connecting with consumers. This narrative transforms each bottle into more than just a drink: a fragment of living history that travels to countries like the United States and Europe. Products such as the “Legendario” and “Reserva 21” have become symbols of luxury backed by international awards that consolidate their prestige.</p>
+
+    <h2>Challenges and Opportunities: How to Cross Borders?</h2>
+
+    <blockquote>"One must be persistent with intelligence... success first comes from strengthening your brand locally" – Jhoan Andrade.</blockquote>
+
+    <p>Both companies have faced internal barriers such as logistics and socio-political issues, as well as competition and saturation in international markets. However, they have shown resilience and strategic investment to overcome these obstacles, prioritizing quality and reliability even when this implies additional costs.</p>
+
+    <p>Ron Carúpano has responded by strengthening quality as its main competitive argument, while Franceschi has bet on mixed logistical models, producing abroad when necessary and maintaining standards that convince international clients despite internal difficulties.</p>
+
+    <p>For these brands, excellence in export is not a matter of chance, but the result of discipline, consistency in quality, operational efficiency, and a long-term strategic vision that includes sustainability.</p>
+
+    <p>Ron Carúpano reinforces its premium positioning, and Franceschi focuses first on strengthening the local brand, telling real stories, and building long-lasting relationships that withstand crises.</p>
+
+    <img src="EmpaqueChoco.jpg" alt="Descripción de la imagen" style="display: block; margin: 30px auto; max-width: 50%; height: auto; border-radius: 12px;">
+    <figcaption style="font-size: 0.9em; color: #555; margin-top: -10px; margin-left: 450px;">
+        Image by Lilian El Kareh
+    </figcaption>
+
+    <h2>When Added Value Is Born at Home</h2>
+
+    <p>Both Ron Carúpano and Franceschi Chocolate understand that competing in international markets is not just about technical quality; it is about projecting cultural identity as a strategy.</p>
+
+    <p>Ron Carúpano builds luxury and exclusivity from its history and tradition; Franceschi does so through sustainability and the connection with local producers. Both brands have turned their origin into a competitive advantage and a story that emotionally connects with consumers.</p>
+
+    <p>As Andrade summarizes:</p>
+
+    <p>“Being patient, focusing on quality, maintaining efficiency… is what allows you to compete abroad.”</p>
+
+    <p>These interviews reveal how Venezuelan identity and its history can position products overseas and add value without the need to completely transform them. While exporting finished products with higher added value can significantly boost the country’s economy, it is also possible to convey and project national identity through the stories that accompany raw materials, as is the case with cacao.</p>
+
+    <p>This strategy could be replicated with other export products such as fruits or coffee, which are often easier to distribute from Venezuela.</p>
+
+    <p>Despite internal logistical and socio-political challenges, persistence, sustained quality, and a marketing narrative that highlights heritage and the human effort behind the products are key for Venezuelan gastronomy to cross borders.</p>
+
+    <p>As Franceschi summarizes:</p>
+
+    <p>“Being Venezuelan is also that. Knowing that what is born here can conquer the world.”</p>
+
+
+        <img src="RonYChoco.jpg" alt="Descripción de la imagen" style="display: block; margin: 30px auto; max-width: 50%; height: auto; border-radius: 12px;">
+    <figcaption style="font-size: 0.9em; color: #555; margin-top: -10px; margin-left: 450px;">
+        Image by Lilian El Kareh
+    </figcaption>
+<!--
+          <div class="mini-carousel">
+        <input type="radio" name="slide" id="img7" checked>
+        <input type="radio" name="slide" id="img8">
+        <input type="radio" name="slide" id="img9">
+
+        <div class="slides">
+            <div class="slide">
+            <img src="RonyChoco.jpeg" alt="Cacao en la hacienda">
+            </div>
+            <div class="slide">
+            <img src="Conclusion2.jpeg" alt="Proceso del chocolate">
+            </div>
+            <div class="slide">
+            <img src="3Chocos.jpeg" alt="Empaque premium Franceschi">
+            </div>
+        </div>
+
+            <div class="nav">
+                <label for="img7"></label>
+                <label for="img8"></label>
+                <label for="img9"></label>
+            </div>
+        </div>
+      -->
+    </article>
+
+    <aside>
+    <a href="https://roncarupano.com/" class="custom-button" style="display: flex; align-items: center; gap: 8px;">
+    <img src="ron.png" alt="Ron Carúpano" style="width: 20px; height: 20px; flex-shrink: 0;">
+    <span>Meet Ron Carúpano</span>
+    <span style="margin-left: auto;">➤</span>
+    </a>
+
+    <a href="https://www.franceschichocolate.com/" class="custom-button" style="display: flex; align-items: center; gap: 8px;">
+    <img src="leche-con-chocolate.png" alt="Chocolate Franceschi" style="width: 20px; height: 20px; flex-shrink: 0;">
+    <span>Meet Chocolate Franceschi</span>
+    <span style="margin-left: auto;">➤</span>
+    </a>
+
+    <a href="Index.html" class="custom-button" style="display: flex; align-items: center; gap: 8px;">
+    <img src="reino-unido.png" alt="English Version" style="width: 20px; height: 20px; flex-shrink: 0;">
+    <span>Spanish Version</span>
+    <span style="margin-left: auto;">➤</span>
+    </a>
+
+      <form class="subscribe">
+        <label for="email">SUBSCRIBE</label>
+        <input type="email" id="email" name="email" placeholder="Email" required>
+        <button type="submit">SUBSCRIBE HERE</button>
+      </form>
+
+    </aside>
+  </main>
+
+  <footer>
+    <div class="container">
+      <img src="LiliFoto.jpeg" alt="Lilian El Kareh">
+      <div class="bio">
+        <h3>About the Author</h3>
+        <p><strong>Lilian El Kareh</strong> is the Academic Coordinator at the LAGA Gastronomy Academy. She holds a Higher University Technician degree in Foreign Trade (USB) and is a certified cook by LAGA.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

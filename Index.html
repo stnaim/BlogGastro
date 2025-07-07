@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sabor que cruza fronteras</title>
+  <style>
+    :root {
+      --max-width: 1140px;
+      --font-serif: 'Georgia', serif;
+      --font-sans: 'Arial', sans-serif;
+      --text-color: #222;
+      --gray: #f2f2f2;
+      --border-color: #ddd;
+      --main-color: #001b7f;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-serif);
+      color: var(--text-color);
+      background: #fff;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border-color);
+      padding: 20px 0;
+    }
+
+    header .container img {
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    }
+    header h1 {
+      font-size: 1.8em;
+      margin: 0;
+      font-family: var(--font-sans);
+    }
+
+    .article-header {
+      margin-bottom: 40px;
+    }
+
+    .article-header .date {
+      font-size: 0.9em;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .article-header h1 {
+      font-size: 2em;
+      margin: 0;
+      font-weight: bold;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+
+    .social-buttons {
+      margin-top: 15px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      background-color: transparent; /* Sin fondo para todas las imágenes */
+      padding: 5px;
+    }
+
+    .social-btn img {
+      width: 40px;
+      height: 40px;
+      display: block;
+    }
+
+    /* Para otros botones que quieras colores o efectos, los puedes agregar aquí */
+
+    .article-header .meta {
+      font-size: 0.9em;
+      color: #888;
+      margin-top: 10px;
+    }
+
+    main {
+      display: flex;
+      max-width: var(--max-width);
+      margin: auto;
+      padding: 40px 20px;
+      gap: 40px;
+    }
+
+    article {
+      flex: 3;
+    }
+
+    aside {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    aside .widget {
+      background: var(--gray);
+      padding: 20px;
+      border: 1px solid var(--border-color);
+    }
+
+    aside .custom-button {
+      background-color: var(--main-color);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      font-family: var(--font-sans);
+      font-size: 1.1em;
+      margin-bottom: 15px;
+      text-decoration: none;
+      justify-content: space-between;
+      border-radius: 12px;
+    }
+
+    aside .custom-button img {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+
+    aside .subscribe {
+      background-color: #fff;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    aside .subscribe label {
+      font-family: var(--font-serif);
+      font-size: 1em;
+    }
+
+    aside .subscribe input[type="email"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      width: 100%;
+      font-size: 1em;
+    }
+
+    aside .subscribe button {
+      background-color: var(--main-color);
+      color: #fff;
+      padding: 10px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+    h2 {
+      border-left: 4px solid black;
+      padding-left: 10px;
+      font-size: 1.4em;
+      margin-top: 40px;
+    }
+
+    p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: justify;
+    }
+
+    figure {
+      margin: 30px 0;
+    }
+
+    figure img {
+      max-width: 100%; /*imagen tamaño*/
+      height: auto;
+      display: block;
+    }
+
+    figure figcaption {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 5px;
+      font-style: italic;
+    }
+
+    blockquote {
+      font-style: italic;
+      border-left: 4px solid #ccc;
+      margin: 30px 0;
+      padding-left: 20px;
+      color: #555;
+    }
+
+    footer {
+      background: #f7f7f7;
+      padding: 40px 20px;
+      margin-top: 60px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    footer .container {
+      max-width: var(--max-width);
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    footer img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    footer .bio {
+      max-width: 600px;
+    }
+    
+    .galeria {
+      display: flex;
+      justify-content: center;
+      gap: 20px; /* espacio entre imágenes */
+      flex-wrap: wrap; /* para que se acomoden en pantallas pequeñas */
+      margin: 40px 0;
+      max-width: 1000px;
+      padding: 0 20px;
+    }
+
+    .galeria img {
+      width: 100%;
+      max-width: 240px; /* cada imagen máximo 300px */
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
+    }
+
+    .texto-con-imagen {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+    }
+
+    .texto-con-imagen img {
+    width: 300px;
+    height: auto;
+    border-radius: 12px;
+    flex-shrink: 0;
+    margin-bottom: 5px; /* espacio entre imagen y texto */
+    }
+
+    .texto-con-imagen .contenido {
+    flex: 1; /* Esto permite que el texto ocupe el resto del espacio */
+    min-width: 0; /* Evita desbordamientos raros */
+    margin-top: -10px; /* esto empuja el texto hacia arriba */
+    }
+
+    .imagen-con-texto figcaption {
+    font-size: 0.9em;
+    color: #555;
+    text-align: center;
+    margin-top: 0; /* elimina espacio extra arriba */
+    }
+
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+
+  header {
+  height: 70px; /* o la altura que quieras */
+  overflow: hidden;
+}
+
+    header .container {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    }
+    header .container img {
+    max-height: 60px;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle; /* o top */
+    line-height: 1;
+    }
+
+  footer .container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .texto-con-imagen {
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;
+  }
+
+  .texto-con-imagen img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .contenido {
+    width: 100%;
+  }
+
+  .galeria {
+    justify-content: center;
+  }
+
+  .galeria img {
+    max-width: 100%;
+  }
+
+  aside {
+    width: 100%;
+  }
+
+  aside .custom-button {
+    font-size: 1em;
+    padding: 10px 15px;
+  }
+
+  footer img {
+    width: 80px;
+    height: 80px;
+  }
+
+  figure figcaption {
+    text-align: center;
+    margin-left: 0 !important;
+  }
+
+  img[style*="margin-left"] {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+  }
+
+  figcaption[style*="margin-left"] {
+    margin-left: 0 !important;
+    text-align: center !important;
+  }
+
+  .social-buttons {
+    justify-content: center;
+  }
+  
+      .article-header h1 {
+    font-size: 1.5em;
+    text-align: center;
+  }
+}
+  </style>
+</head>
+<body>
+<header>
+  <div class="container" style="height: 80px; display: flex; justify-content: left; align-items: center; overflow: visible;">
+    <img src="RompFront.png" alt="Rompiendo Fronteras Logo" style="max-height: 300px; object-fit: contain; margin-top: 0px;" />
+  </div>
+</header>
+
+
+  <main>
+    <article>
+      <div class="article-header">
+        <div class="date">05 JUL 2025</div>
+        <h1>Identidad que cruza fronteras: el cacao y el ron venezolano conquistan el mundo</h1>
+
+        <div class="social-buttons">
+          <a href="https://wa.me/tu-numero" target="_blank" aria-label="WhatsApp" class="social-btn whatsapp" title="WhatsApp">
+            <img src="whatsapp.png" alt="WhatsApp" />
+          </a>
+
+          <a href="https://x.com/tu_usuario" target="_blank" aria-label="X" class="social-btn x" title="X">
+            <img src="x.png" alt="X" />
+          </a>
+
+          <a href="https://facebook.com/tu_usuario" target="_blank" aria-label="Facebook" class="social-btn facebook" title="Facebook">
+            <img src="facebook.png" alt="Facebook" />
+          </a>
+
+          <a href="https://instagram.com/lecafedelili" target="_blank" aria-label="Instagram" class="social-btn instagram" title="Instagram">
+            <img src="instagram.png" alt="Instagram" />
+          </a>
+
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" aria-label="TikTok" class="social-btn tiktok" title="TikTok">
+            <img src="tiktok.png" alt="TikTok" />
+          </a>
+        </div>
+
+        <div class="meta">Publicado por Lilian El Kareh a las 18:06h en Rompiendo Fronteras</div>
+      </div>
+
+      <h2>Mucho más que sabor</h2>
+
+    <p>En el estado Sucre, Venezuela, tierra de hermosos paisajes, nacen productos de alta calidad que cuentan historias. La gastronomía, entendida en su sentido más amplio y multidimensional como saberes, técnicas, historia, impacto social y sostenibilidad, ofrece mucho más que comida; permite crear relatos que cruzan fronteras y conectan con consumidores que buscan autenticidad.</p>
+
+<!-- Imagen a la izquierda, texto adaptado a la derecha -->
+<div class="texto-con-imagen">
+  <figure style="margin: 0;">
+    <img src="cumana.jpg" alt="Franceschi Cacao">
+    <figcaption style="font-size: 0.9em; color: #555; margin-top: 5px;">
+      Imagen de <a href="https://pixabay.com/es/photos/cuman%C3%A1-sucre-venezuela-playa-mar-4101842/">LuisX</a> en Pixabay
+    </figcaption>
+  </figure>
+
+  <div class="contenido">
+    <p>
+      Hoy, en mercados saturados de productos parecidos, esas historias, el arraigo cultural y la identidad se convierten en auténticas ventajas competitivas. Sucre, conocido por sus playas, su clima y sus plantaciones de cacao, concentra esa magia que permite a empresas como Cacao San José, con su marca de chocolates Franceschi, y a Destilería Carúpano, con sus rones de tradición centenaria, ofrecer productos de alta calidad que llevan consigo una cultura y una historia.
+    </p>
+  </div>
+</div>
+
+    <p>Según la FAO (2017), ese valor agregado surge cuando un producto deja de ser solo materia prima para convertirse en algo que refleja historia, calidad y autenticidad. Y aunque Venezuela no figura entre los principales exportadores de alimentos o bebidas de la región, ha logrado destacar precisamente gracias a esa transformación. Por ejemplo, entre enero y abril del presente año, el ron venezolano exportó más de dos millones de cajas a cien países (Banca y Negocios, 2025).</p>
+    <p>Detrás de esas cifras se encuentran historias reales, estrategias construidas con paciencia y pasión.</p>
+
+      <h2>"Sembrando Cacao, Construyendo Futuro" – El Caso de Franceschi Chocolate</h2>
+        <!--
+      <div class="mini-carousel">
+        <input type="radio" name="slide" id="img1" checked>
+        <input type="radio" name="slide" id="img2">
+        <input type="radio" name="slide" id="img3">
+
+        <div class="slides">
+            <div class="slide">
+            <img src="Franceschi.jpeg" alt="Cacao en la hacienda">
+            </div>
+            <div class="slide">
+            <img src="Chocos.jpeg" alt="Proceso del chocolate">
+            </div>
+            <div class="slide">
+            <img src="Empaque.jpeg" alt="Empaque premium Franceschi">
+            </div>
+        </div>
+
+        <div class="nav">
+            <label for="img1"></label>
+            <label for="img2"></label>
+            <label for="img3"></label>
+        </div>
+        </div>
+      -->
+
+        <!-- Galería de 3 imágenes una al lado de otra -->
+      <div class="galeria">
+        <img src="3Choco.jpg" alt="Descripción imagen 1">
+        <img src="3Choco2.jpg" alt="Descripción imagen 3">
+      </div>
+        <figcaption style="font-size: 0.9em; color: #555; margin-top: -30px; margin-left: 480px;">
+                Imagenes de Lilian El Kareh
+        </figcaption>
+
+      <blockquote>"El valor agregado va más hacia el desarrollo de la gente... formando al productor con estructuras que le permitan garantizar su crecimiento" – Jhoan Andrade, Gerente de Cacao San José.</blockquote>
+
+      <h3>De la tierra a la tableta</h3>
+
+      <p>En la península de Paria se encuentra Cacao San José, con una hacienda llena de historia para contar a través de su marca de chocolate Franceschi. Allí han sabido integrar calidad, sostenibilidad, identidad cultural y desarrollo comunitario, apoyándose en tres pilares fundamentales que sostienen su propuesta diferenciadora.</p>
+
+      <p>La trazabilidad total es uno de esos pilares, cada lote de cacao con el que se hace su chocolate puede rastrearse desde el grano, hasta el nombre del productor y su ubicación, haciendo que su chocolate sea 100% trazable. Incluso en algunos empaques de sus chocolates premium aparece el número del lote con el que se elaboró. Esto genera confianza en la calidad y seguridad del producto, promoviendo una reputación positiva en nuevos mercados.</p>
+
+      <p>El segundo pilar es su cacao de calidad. Franceschi preserva siete variedades criollas únicas: Ocumare 61, 67 y 77, Chuao, Guasare, Canoabo y Porcelana, además de un cacao forastero Río Caribe y un trinitario, todos cultivados con cuidado y compromiso en la Hacienda San José. Para la marca es vital que sus productos sean de alta calidad, pues esta característica también refleja la imagen que proyectan al exportar.</p>
+
+      <p>El tercer pilar es la Certificación B y lo que llaman “polinización social”. Como empresa B, Franceschi mide su éxito no solo en ganancias, sino en su impacto social. A través de la Fundación San José, en 13 años han impactado a 17.563 niños, 2.036 educadores, 1.586 productores y emprendedores, 4.991 cuidadores y 18.489 pacientes en servicios de salud, demostrando que su compromiso abarca toda la cadena humana detrás del cacao.</p>
+      
+      <h3>Estrategia de Mercado: “Venezuela es Cacao”</h3>
+      
+      <p>Cacao San José comprende el poder de la narrativa emocional y la conexión cultural. El storytelling es la herramienta clave para construir relaciones duraderas con consumidores, destacando no solo el producto sino también los valores, la historia y la gente detrás. Franceschi construye una narrativa de impacto social, trazabilidad, sostenibilidad y orgullo venezolano, apoyada en medios digitales, videos, lemas y contenido que humaniza el producto.</p>
+
+      <p>Como dice Jhoan Andrade:</p>
+
+      <p>“Parte del éxito es que la marca sea reconocida por los venezolanos, para que sean estos mismos venezolanos en el mundo quienes enaltezcan y hagan que ese producto termine llegando a otros clientes… ser paciente, concentrarte en hacer productos de calidad, ser eficiente en productividad… esa eficiencia es lo que te va a permitir ser competitivo en los mercados internacionales.”</p>
+
+      <p>Franceschi opera con un modelo de exportación que combina el posicionamiento de materias primas y productos terminados. Exporta a más de 23 países, principalmente granos, licor y manteca de cacao (90% materia prima), pero también chocolates premium (10% productos terminados) que cuentan historias del origen. Su modelo profesionaliza a pequeños productores, preserva variedades criollas únicas y posiciona al cacao venezolano como un producto con apellido propio.</p>
+
+      <h2>Ron Carúpano – 250 años de tradición en una botella</h2>
+      <!--
+      <div class="mini-carousel">
+        <input type="radio" name="slide" id="img4" checked>
+        <input type="radio" name="slide" id="img5">
+        <input type="radio" name="slide" id="img6">
+
+        <div class="slides">
+            <div class="slide">
+            <img src="Ron.jpeg" alt="Cacao en la hacienda">
+            </div>
+            <div class="slide">
+            <img src="Ronylib.jpeg" alt="Proceso del chocolate">
+            </div>
+            <div class="slide">
+            <img src="Carupano.jpeg" alt="Empaque premium Franceschi">
+            </div>
+        </div>
+
+            <div class="nav">
+                <label for="img4"></label>
+                <label for="img5"></label>
+                <label for="img6"></label>
+            </div>
+        </div>
+      -->
+
+      <blockquote>“El ron es una bebida emblemática de Venezuela, representa la camaradería y el calor humano de los venezolanos… Ron Carúpano es más que sus productos, es una forma de ser.” – Auroberth Rojas, Gerente de Destilería Carúpano.</blockquote>
+
+      <p>Fundada hace más de 250 años en el Valle de Macarapana, Ron Carúpano no es solo una marca de licor, sino un emblema del ron venezolano. Tiene pilares que la hacen única.</p>
+
+      <p>El agua que utilizan para elaborar el ron proviene de manantial o de pozos profundos, lo que garantiza pureza y evita olores o sabores indeseados.</p>
+      
+      <p>El microclima excepcional del valle de Macarapana, en Carúpano, estado Sucre, permite que el envejecimiento del ron se acelere e intensifique, aportando a su sabor distintivo.</p>
+     
+      <p> La figura de la Maestra Mezcladora, Carmen López de Bastidas, única mujer en ese rol en Venezuela, ha desarrollado durante más de 35 años los perfiles únicos de Destilería Carúpano, aportando maestría y pasión a cada botella.</p>
+      
+      <p>Desde 2022, el “Ron de Venezuela” es una Denominación de Origen Controlada (DOC) que exige que el ron sea elaborado con 100% melaza de caña venezolana, tenga un mínimo de dos años en barricas de roble y se produzca íntegramente en el país. Esto diferencia al ron venezolano y consolida su prestigio y autenticidad.</p>
+        
+                <!-- Galería de 3 imágenes una al lado de otra -->
+      
+      <img src="Ron.jpg" alt="Descripción de la imagen" style="display: block; margin: 30px auto; max-width: 100%; height: auto; border-radius: 12px;">
+       <figcaption style="font-size: 0.9em; color: #555; margin-top: -10px; margin-left: 650px;">
+                Imagen de Lilian El Kareh
+        </figcaption>
+
+      <h3>Estrategia de Mercado: “Un legado de 250 años...”</h3>
+
+    <p>Ron Carúpano ha construido su estrategia de mercado fusionando la herencia venezolana con la sofisticación que demanda el mercado internacional, conectando emocionalmente con los consumidores. Este relato transforma cada botella en algo más que una bebida: un fragmento de historia viva que viaja a países como Estados Unidos y Europa. Productos como el “Legendario” o el “Reserva 21” se han convertido en símbolos de lujo respaldados por premios internacionales que consolidan su prestigio.</p>
+
+    <h2>Retos y Oportunidades: ¿Cómo Cruzar Fronteras?</h2>
+
+    <blockquote>"Hay que ser persistente con inteligencia... el éxito viene primero en fortalecer tu marca localmente" – Jhoan Andrade.</blockquote>
+
+    <p>
+        Ambas empresas han enfrentado barreras internas como la logística y problemas socio-políticos, así como la competencia y saturación en mercados internacionales. Sin embargo, han demostrado resiliencia y una inversión estratégica para superar esos obstáculos, priorizando calidad y confiabilidad incluso cuando esto implica costos adicionales.
+    </p>
+
+    <p>Ron Carúpano ha respondido fortaleciendo la calidad como su principal argumento competitivo, mientras Franceschi ha apostado por modelos logísticos mixtos, produciendo en el extranjero cuando es necesario y manteniendo estándares que convencen a clientes internacionales pese a las dificultades internas.</p>
+    
+    <p>Para estas marcas, la excelencia en la exportación no es fruto de la casualidad, sino el resultado de disciplina, coherencia en la calidad, eficiencia operativa y visión estratégica de largo plazo que incluye sostenibilidad.</p>
+
+    <p>Ron Carúpano refuerza su posicionamiento premium, y Franceschi apuesta por fortalecer primero la marca local, contar historias reales y construir relaciones de largo plazo que resistan crisis.</p>
+
+    <img src="EmpaqueChoco.jpg" alt="Descripción de la imagen" style="display: block; margin: 30px auto; max-width: 50%; height: auto; border-radius: 12px;">
+    <figcaption style="font-size: 0.9em; color: #555; margin-top: -10px; margin-left: 450px;">
+        Imagen de Lilian El Kareh
+    </figcaption>
+
+    <h2>Cuando el valor agregado nace en casa</h2>
+
+    <p>Tanto Ron Carúpano como Franceschi Chocolate entienden que competir en mercados internacionales no se trata solo de calidad técnica, es proyectar la identidad cultural como estrategia.</p>
+
+    <p>Ron Carúpano construye lujo y exclusividad desde su historia y tradición; Franceschi lo hace desde la sostenibilidad y el vínculo con productores locales. Ambas marcas han convertido el origen en ventaja competitiva y en una historia que conecta emocionalmente con el consumidor.</p>
+
+    <p>Cómo resume Andrade:</p>
+
+    <P>“Ser paciente, concentrarte en la calidad, mantener eficiencia… es lo que permite competir afuera.”</P>
+
+    <p>Estas entrevistas revelan cómo la identidad venezolana y su historia pueden posicionar productos en el extranjero y aportarles valor agregado sin necesidad de transformarlos completamente. Si bien exportar productos terminados y con mayor valor agregado puede impulsar significativamente la economía del país, también es posible transmitir y proyectar la identidad nacional a través de las historias que acompañan la materia prima, como ocurre con el cacao.</p>
+
+    <p>Esta estrategia podría replicarse con otros productos de exportación como frutas o café, que además suelen ser más sencillos de distribuir desde Venezuela.</p>
+
+    <p>A pesar de los retos logísticos y socio-políticos internos, la persistencia, la calidad sostenida y una narrativa de marketing que resalte la herencia y el esfuerzo humano detrás de los productos son clave para que la gastronomía venezolana cruce fronteras.</p>
+
+    <p>Cómo resume Franceschi:</p>
+
+    <p>“Ser venezolano también es eso. Saber que lo que nace aquí, puede conquistar el mundo.”</p>
+
+        <img src="RonYChoco.jpg" alt="Descripción de la imagen" style="display: block; margin: 30px auto; max-width: 50%; height: auto; border-radius: 12px;">
+    <figcaption style="font-size: 0.9em; color: #555; margin-top: -10px; margin-left: 450px;">
+        Imagen de Lilian El Kareh
+    </figcaption>
+<!--
+          <div class="mini-carousel">
+        <input type="radio" name="slide" id="img7" checked>
+        <input type="radio" name="slide" id="img8">
+        <input type="radio" name="slide" id="img9">
+
+        <div class="slides">
+            <div class="slide">
+            <img src="RonyChoco.jpeg" alt="Cacao en la hacienda">
+            </div>
+            <div class="slide">
+            <img src="Conclusion2.jpeg" alt="Proceso del chocolate">
+            </div>
+            <div class="slide">
+            <img src="3Chocos.jpeg" alt="Empaque premium Franceschi">
+            </div>
+        </div>
+
+            <div class="nav">
+                <label for="img7"></label>
+                <label for="img8"></label>
+                <label for="img9"></label>
+            </div>
+        </div>
+      -->
+    </article>
+
+    <aside>
+    <a href="https://roncarupano.com/" class="custom-button" style="display: flex; align-items: center; gap: 8px;">
+    <img src="ron.png" alt="Ron Carúpano" style="width: 20px; height: 20px; flex-shrink: 0;">
+    <span>Conoce Ron Carúpano</span>
+    <span style="margin-left: auto;">➤</span>
+    </a>
+
+    <a href="https://www.franceschichocolate.com/" class="custom-button" style="display: flex; align-items: center; gap: 8px;">
+    <img src="leche-con-chocolate.png" alt="Chocolate Franceschi" style="width: 20px; height: 20px; flex-shrink: 0;">
+    <span>Conoce Chocolate Franceschi</span>
+    <span style="margin-left: auto;">➤</span>
+    </a>
+
+    <a href="EnglishVersion.html" class="custom-button" style="display: flex; align-items: center; gap: 8px;">
+    <img src="reino-unido.png" alt="English Version" style="width: 20px; height: 20px; flex-shrink: 0;">
+    <span>English Version</span>
+    <span style="margin-left: auto;">➤</span>
+    </a>
+
+      <form class="subscribe">
+        <label for="email">SUSCRÍBETE</label>
+        <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
+        <button type="submit">SUSCRÍBETE AQUÍ</button>
+      </form>
+
+    </aside>
+  </main>
+
+  <footer>
+    <div class="container">
+      <img src="LiliFoto.jpeg" alt="Lilian El Kareh">
+      <div class="bio">
+        <h3>Sobre la autora</h3>
+        <p><strong>Lilian El Kareh</strong> es Coordinadora Académica de la Academia de Gastronomía LAGA. Técnico Superior Universitario en Comercio Exterior (USB) y cocinera certificada por LAGA.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
